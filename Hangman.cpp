@@ -9,68 +9,85 @@ int letterFill (char, string, string&);
 
 int main ()
 {
-	string name;
-	char letter;
-	int num_of_wrong_guesses=0;
-	string word;
-	string words[] =
-	{
-		"india",
-		"pakistan",
-		"nepal",
-		"malaysia",
-		"philippines",
-		"australia",
-		"iran",
-		"ethiopia",
-		"oman",
-		"indonesia",
-		"brazil",
-		"chile",
-		"denmark"
-	};
+    for(int i=0;i<50;i++)
+    {
+        cout<<"*";
+    }
+        string name;
+        char letter;
+        int num_of_wrong_guesses=0;
+        string word;
+        string words[] =
+        {
+            "india",
+            "pakistan",
+            "nepal",
+            "malaysia",
+            "philippines",
+            "australia",
+            "iran",
+            "ethiopia",
+            "oman",
+            "indonesia",
+            "brazil",
+            "chile",
+            "denmark"
+        };
 
-	srand(time(NULL));
-	int n=rand()% 13;
-	word=words[n];
-	string unknown(word.length(),'*');
+            srand(time(NULL));
+            int n=rand()% 13;
+            word=words[n];
+            string unknown(word.length(),'*');
 
-	cout << "\n\nWelcome to hangman...Guess a country Name";
-	cout << "\n\nEach letter is represented by a star.";
-	cout << "\n\nYou have to type only one letter in one try";
-	cout << "\n\nYou have " << MAX_TRIES << " tries to try and guess the word.";
-	cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+            cout <<endl<<"          "<<"WELCOME TO HANGMAN"<<endl<<endl;
+            cout<<"RULES-:"<<endl<<"Guess a country Name";
+            cout << "\nEach letter is represented by a star.";
+            cout << "\nYou have to type only one letter in one try";
+            cout << "\nYou have " << MAX_TRIES << " tries to try and guess the word.";
+            cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
 
-	while (num_of_wrong_guesses < MAX_TRIES)
-	{
-		cout << "\n\n" << unknown;
-		cout << "\n\nGuess a letter: ";
-		cin >> letter;
-		if (letterFill(letter, word, unknown)==0)
-		{
-			cout << endl << "Whoops! That letter isn't in there!" << endl;
-			num_of_wrong_guesses++;
-		}
-		else
-		{
-			cout << endl << "You found a letter! Isn't that exciting!" << endl;
-		}
-		cout << "You have " << MAX_TRIES - num_of_wrong_guesses;
-		cout << " guesses left." << endl;
-		if (word==unknown)
-		{
-			cout << word << endl;
-			cout << "Yeah! You got it, CONGO!!!!";
-			break;
-		}
-	}
-	if(num_of_wrong_guesses == MAX_TRIES)
-	{
-		cout << "\nSorry, you lose...you've been hanged." << endl;
-		cout << "The word was : " << word << endl;
-	}
-	cin.ignore();
-	cin.get();
+                while (num_of_wrong_guesses < MAX_TRIES)
+                {
+                    cout << "\n\n" <<"          "<<unknown;
+                    cout << "\n\nGuess a letter: ";
+                    cin >> letter;
+                    if (letterFill(letter, word, unknown)==0)
+                        {
+                            cout << endl << "Whoops! That letter isn't in there!" << endl;
+                            num_of_wrong_guesses++;
+                        }
+                    else
+                        {
+                            cout << endl << "You found a letter! Great Keep Going!" << endl;
+                        }
+
+                    cout << "You have " << MAX_TRIES - num_of_wrong_guesses;
+                    cout << " guesses left." << endl;
+                    if (word==unknown)
+                        {
+                            cout << word << endl;
+                            cout <<endl<< "Yeah! You got it, CONGO!!!!";
+                            break;
+                        }
+                }
+                    if(num_of_wrong_guesses == MAX_TRIES)
+                        {
+                            cout << "\nSorry, you lose..."<<endl<<"you've been HANEGD  ^_^ ." << endl;
+                            cout << "The word was : "<<endl;
+                            cout<<"               ";
+                            for(int i=0;i<=word.length()+3;i++)
+                            {
+                                cout<<"#";
+                            }
+                            cout<<endl<<"               # "<<word<<" #"<<endl;
+                            cout<<"               ";
+                            for(int i=0;i<=word.length()+3;i++)
+                            {
+                                cout<<"#";
+                            }
+                        }
+                cin.ignore();
+                cin.get();
 	return 0;
 }
 
